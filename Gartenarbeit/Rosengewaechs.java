@@ -1,6 +1,6 @@
 public sealed class Rosengewaechs extends Pflanze permits Lorbeerkirsche, Himbeere {
 
-  private int verbreitung;
+  protected int verbreitung;
 
   public Rosengewaechs(int maxLaenge, int wachstum, int laenge, int verbreitung) {
     super(maxLaenge, wachstum, laenge);
