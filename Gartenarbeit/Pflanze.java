@@ -23,7 +23,7 @@ public sealed class Pflanze permits BlauerEisenhut, Salbei, Rosengewaechs {
   }
 
   public void waessern() {
-    this.laenge += this.laenge + this.wachstum > this.maxLaenge ? 0 : this.wachstum;
+    this.laenge = Math.min(this.laenge + this.wachstum, this.maxLaenge);
   }
 
   public void schneiden(int x) {

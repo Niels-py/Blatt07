@@ -14,7 +14,7 @@ public sealed class Rosengewaechs extends Pflanze permits Lorbeerkirsche, Himbee
   @Override
   public void waessern() {
     int x = this.verbreitung + this.wachstum;
-    this.laenge += this.laenge + x > maxLaenge ? 0 : x;
+    this.laenge = Math.min(this.laenge + x, this.maxLaenge);
   }
 
   @Override
