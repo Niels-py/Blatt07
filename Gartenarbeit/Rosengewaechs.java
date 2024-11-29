@@ -20,6 +20,6 @@ public sealed class Rosengewaechs extends Pflanze permits Lorbeerkirsche, Himbee
   @Override
   public void schneiden(int x) {
     if (x < 0) return;
-    this.laenge = 1;
+    this.laenge = Math.min(this.laenge, 1);
   }
 }
