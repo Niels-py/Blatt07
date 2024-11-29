@@ -2,21 +2,11 @@ public class Feld {
 
   public static Pflanze auswahl(PflanzenPaar pair) {
     return switch (pair) {
-      case PflanzenPaar(Rosengewaechs x, _) -> {
-        yield x;
-      }
-      case PflanzenPaar(_, Rosengewaechs x) -> {
-        yield x;
-      }
-      case PflanzenPaar(BlauerEisenhut a, Salbei b) when b.getLaenge() >= 5 -> {
-        yield a;
-      }
-      case PflanzenPaar(Salbei a, BlauerEisenhut b) when a.getLaenge() >= 5 -> {
-        yield b;
-      }
-      default -> {
-        yield pair.a();
-      }
+      case PflanzenPaar(Rosengewaechs x, _) -> x;
+      case PflanzenPaar(_, Rosengewaechs x) -> x;
+      case PflanzenPaar(BlauerEisenhut e, Salbei s) when s.getLaenge() >= 5 -> s;
+      case PflanzenPaar(Salbei s, BlauerEisenhut e) when s.getLaenge() >= 5 -> s;
+      default -> pair.a();
     };
   }
 
