@@ -5,8 +5,8 @@ public class Feld {
         switch (pair) {
           case PflanzenPaar(Rosengewaechs x, _) -> x;
           case PflanzenPaar(_, Rosengewaechs x) -> x;
-          case PflanzenPaar(BlauerEisenhut _, Salbei s) when s.getLaenge() >= 5 -> s;
-          case PflanzenPaar(Salbei s, BlauerEisenhut _) when s.getLaenge() >= 5 -> s;
+          case PflanzenPaar(BlauerEisenhut e, Salbei s) when s.getLaenge() >= 5 -> e;
+          case PflanzenPaar(Salbei s, BlauerEisenhut e) when s.getLaenge() >= 5 -> e;
           default -> pair.a();
         };
 
