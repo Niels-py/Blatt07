@@ -1,13 +1,25 @@
 public class Feld {
 
   public static Pflanze auswahl(PflanzenPaar pair) {
-    return switch (pair) {
-      case PflanzenPaar(Rosengewaechs x, _) -> x;
-      case PflanzenPaar(_, Rosengewaechs x) -> x;
-      case PflanzenPaar(BlauerEisenhut e, Salbei s) when s.getLaenge() >= 5 -> s;
-      case PflanzenPaar(Salbei s, BlauerEisenhut e) when s.getLaenge() >= 5 -> s;
-      default -> pair.a();
-    };
+    Pflanze p =
+        switch (pair) {
+          case PflanzenPaar(Rosengewaechs x, _) -> x;
+          case PflanzenPaar(_, Rosengewaechs x) -> x;
+          case PflanzenPaar(BlauerEisenhut e, Salbei s) when s.getLaenge() >= 5 -> s;
+          case PflanzenPaar(Salbei s, BlauerEisenhut e) when s.getLaenge() >= 5 -> s;
+          default -> pair.a();
+        };
+
+    if (p instanceof Rosengewaechs) {
+      while (p.getLaenge() < p.getMaxLaenge()) {
+        p.waessern();
+      }
+      if (p instanceof Himbeere) {
+        p.schneiden(1);
+      }
+    }
+
+    return p;
   }
 
   public static void main(String[] args) {
