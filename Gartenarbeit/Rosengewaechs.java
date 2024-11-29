@@ -1,6 +1,6 @@
 public sealed class Rosengewaechs extends Pflanze permits Lorbeerkirsche, Himbeere {
 
-  private int verbreitung;
+  protected int verbreitung;
 
   public Rosengewaechs(int maxLaenge, int wachstum, int laenge, int verbreitung) {
     super(maxLaenge, wachstum, laenge);
@@ -13,13 +13,13 @@ public sealed class Rosengewaechs extends Pflanze permits Lorbeerkirsche, Himbee
 
   @Override
   public void waessern() {
-    int x = this.verbreitung + this.wachstum;
-    this.laenge += this.laenge + x > maxLaenge ? 0 : x;
+    int x = this.verbreitung * this.wachstum;
+    this.laenge = Math.min(this.laenge + x, this.maxLaenge);
   }
 
   @Override
   public void schneiden(int x) {
     if (x < 0) return;
-    this.laenge = 1;
+    this.laenge = Math.min(this.laenge, 1);
   }
 }
